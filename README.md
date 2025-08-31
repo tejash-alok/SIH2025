@@ -1,2 +1,2 @@
 # SIH2025
-THIS repo is related to sih2025 frontedHtml
+THIS repo is related to sih2025 fronted HTML
