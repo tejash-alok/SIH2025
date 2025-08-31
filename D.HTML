@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Farmer Frontend</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Noto Sans Hindi', Arial, sans-serif;
+      background: #f8f7f3;
+      color: #3a512a;
+      margin: 0;
+    }
+    .banner {
+      background: linear-gradient(90deg,#e2e09f 70%, #fffbe6 100%);
+      text-align: center;
+      padding-bottom: 0.5em;
+    }
+    .banner-img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: cover;
+      border-bottom: 5px solid #86c232;
+    }
+    .tagline {
+      font-size: 1.4em;
+      color: #226d1c;
+      margin: .7em 0;
+      font-weight:bold;
+    }
+    .nav-btn {
+      background: #6cba57;
+      color: #fffce7;
+      padding: .6em 1.4em;
+      border-radius: 1.2em;
+      border: none;
+      margin: 0.3em;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 1px 2px 8px #c9e5b1;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover, .action-btn:hover {
+      background: #9ed86f;
+    }
+    .section-title {
+      font-size: 1.2em;
+      color: #21721d;
+      text-align: center;
+      margin-top: 1em;
+    }
+    .upload-btn {
+      display: block;
+      margin: 1em auto;
+      padding: .7em;
+      font-size: 1.1em;
+      border: 2px solid #e6cd8b;
+      border-radius: 8px;
+      background: #e4f8db;
+      cursor: pointer;
+    }
+    .action-btn {
+      display: block;
+      margin: 1em auto;
+      background: #ecae1a;
+      color: #3a512a;
+      font-size: 1.08em;
+      padding: .7em 1.6em;
+      border: none;
+      border-radius: 1.4em;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 1px 2px 6px #f3e59b;
+    }
+    .crop-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1em;
+    }
+    .crop-card {
+      background: #fff;
+      border: 2px solid #d8dfb8;
+      border-radius: 1.8em;
+      box-shadow: 1px 4px 18px #e4e7dd;
+      width: 250px;
+      margin-bottom: 1em;
+      padding: 1em;
+      text-align: left;
+    }
+    .crop-img {
+      width: 100%;
+      max-height: 110px;
+      object-fit: cover;
+      border-radius: 1em;
+      margin-bottom: .4em;
+    }
+    h3 {
+      font-size: 1.12em;
+      color: #16771a;
+      margin-top: 0;
+    }
+    @media screen and (max-width:700px) {
+      .crop-list {
+        flex-direction: column;
+        align-items: center;
+      }
+      .crop-card {
+        width: 85vw;
+        max-width: 370px;
+      }
+      .banner-img {
+        max-height: 90px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="banner">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80" alt="Farm Banner" class="banner-img">
+    <h1 class="tagline">अपकी मिट्टी का रिपोर्ट, आपका Best Crop Suggestion</h1>
+    <nav>
+      <button onclick="showUpload()" class="nav-btn">Soil Test Report अपलोड करें | Upload</button>
+      <button onclick="showResult()" class="nav-btn">फसल सुझाव देखें | Crop Suggestions</button>
+    </nav>
+  </header>
+  <main>
+    <!-- Soil Report Upload Section -->
+    <section id="upload-section" style="display:block;">
+      <h2 class="section-title">अपना soil test रिपोर्ट यहाँ अपलोड करें</h2>
+      <input type="file" id="soilReport" accept=".pdf,.jpg,.jpeg,.png,.txt" class="upload-btn">
+      <br>
+      <small>PDF / चित्र / टेक्स्ट स्वीकार्य है | PDF/Image/Text accepted</small>
+      <button onclick="showResult()" class="action-btn">फसल सुझाव पाएं | Get Crop Suggestions</button>
+    </section>
+    <!-- Crop Suggestion Result Section -->
+    <section id="result-section" style="display:none;">
+      <h2 class="section-title">Crop Suggestions | फसल सुझाव</h2>
+      <div class="crop-list">
+        <!-- Example Crop Card -->
+        <div class="crop-card">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400&q=80" alt="Wheat" class="crop-img">
+          <h3>गेंहू | Wheat</h3>
+          <p>Best Season: <strong>Nov-Mar | नवम्बर-मार्च</strong></p>
+          <p>Fertilizers: <strong>N:P:K - 120:60:60</strong></p>
+          <p>Irrigation: <strong>Every 20 days | हर 20 दिन</strong></p>
+          <p>Yield: <strong>3000kg/acre approx. | लगभग 3000किग्रा/एकड़</strong></p>
+        </div>
+        <div class="crop-card">
+          <img src="https://images.unsplash.com/photo-1505576391880-7b1a9bfc2dfa?w=400&q=80" alt="Rice" class="crop-img">
+          <h3>धान | Rice</h3>
+          <p>Best Season: <strong>Jun-Nov | जून-नवम्बर</strong></p>
+          <p>Fertilizers: <strong>N:P:K - 100:50:50</strong></p>
+          <p>Irrigation: <strong>Flood | बाढ़ सिंचाई</strong></p>
+          <p>Yield: <strong>2500kg/acre approx. | लगभग 2500किग्रा/एकड़</strong></p>
+        </div>
+        <!-- Add more crop-cards as needed -->
+      </div>
+      <button onclick="showUpload()" class="action-btn">नई रिपोर्ट अपलोड करें | Upload New Report</button>
+    </section>
+  </main>
+  <script>
+    function showUpload() {
+      document.getElementById('upload-section').style.display = 'block';
+      document.getElementById('result-section').style.display = 'none';
+      window.scrollTo(0, 0);
+    }
+    function showResult() {
+      document.getElementById('upload-section').style.display = 'none';
+      document.getElementById('result-section').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+    // Placeholder: Add backend connection or advanced logic as needed
+  </script>
+</body>
+</html>
